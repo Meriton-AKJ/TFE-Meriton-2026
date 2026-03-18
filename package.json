@@ -1,0 +1,7 @@
+{
+  "name": "tfe-meriton",
+  "private": true,
+  "devDependencies": {
+    "prisma": "^7.5.0"
+  }
+}
