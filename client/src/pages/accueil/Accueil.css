@@ -1,0 +1,548 @@
+/* Hero */
+.hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primary);
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  text-align: center;
+  color: #fff;
+  padding: 2rem 1.5rem;
+}
+
+.hero-label {
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin: 0 0 0.5rem;
+}
+
+.hero-content h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.8rem;
+  color: #fff;
+  margin: 0 0 1rem;
+}
+
+.hero-sub {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.75);
+  margin: 0 0 2rem;
+  font-size: 1.05rem;
+}
+
+.hero-btn {
+  display: inline-block;
+  padding: 0.8em 2em;
+  border-radius: var(--radius-small);
+  font-weight: 500;
+  background-color: var(--color-accent);
+  color: #fff;
+  transition: background-color 0.2s;
+}
+
+.hero-btn:hover {
+  background-color: var(--color-accent-hover);
+  color: #fff;
+}
+
+/* Barre de réservation rapide */
+.reservation-bar {
+  background-color: #fff;
+  box-shadow: var(--shadow);
+  padding: 1.5rem;
+}
+
+.reservation-bar-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.resa-btn {
+  display: inline-block;
+  padding: 0.75em 1.5em;
+  border-radius: var(--radius-small);
+  background-color: var(--color-primary);
+  color: #fff;
+  font-weight: 500;
+  text-align: center;
+  transition: background-color 0.2s;
+  align-self: center;
+}
+
+.resa-btn:hover {
+  background-color: var(--color-primary-hover);
+  color: #fff;
+}
+
+/* Section Chambres */
+.section-chambres {
+  padding: 3rem 1.5rem;
+}
+
+.section-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.section-header h2 em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.voir-tout {
+  font-size: 0.85rem;
+  color: var(--color-primary);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.voir-tout:hover {
+  color: var(--color-accent);
+}
+
+.chambres-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.chambre-card {
+  border-radius: var(--radius-big);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.chambre-img-placeholder {
+  height: 180px;
+  background-color: var(--color-contrast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.chambre-img-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.chambre-info {
+  padding: 1.2rem;
+}
+
+.chambre-info h3 {
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
+}
+
+.chambre-info p {
+  font-size: 0.88rem;
+  color: #666;
+  margin: 0 0 1rem;
+}
+
+.chambre-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chambre-footer .btn-primary {
+  padding: 0.6em 1.8em;
+  border-radius: var(--radius-small);
+}
+
+/* Section Services */
+.section-services {
+  background-color: #fff;
+  padding: 3rem 1.5rem;
+}
+
+.section-services h2 {
+  margin-bottom: 2rem;
+}
+
+.section-services h2 em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.services-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--color-contrast);
+}
+
+.service-row:first-child {
+  border-top: 1px solid var(--color-contrast);
+}
+
+.service-row-icon {
+  font-size: 1.5rem;
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.service-row-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.service-row-body strong {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: var(--color-primary);
+}
+
+.service-row-body span {
+  font-size: 0.88rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* Section Avis */
+.section-avis {
+  background-color: var(--color-primary);
+  overflow: hidden;
+}
+
+.section-avis h2 {
+  color: #fff;
+  margin-bottom: 2rem;
+  padding-right: 1.5rem;
+}
+
+.section-avis h2 em {
+  color: var(--color-accent);
+  font-style: italic;
+}
+
+.section-avis-inner {
+  padding: 2rem 0 3rem 1.5rem;
+}
+
+
+.avis-scroll {
+  display: flex;
+  gap: 1.2rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  padding-right: 4rem;
+  padding-bottom: 0.5rem;
+}
+
+.avis-scroll::-webkit-scrollbar {
+  display: none;
+}
+
+.avis-card {
+  scroll-snap-align: start;
+  flex-shrink: 0;
+  width: 270px;
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-big);
+  padding: 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.avis-quote-mark {
+  font-family: 'Poppins', sans-serif;
+  font-size: 3rem;
+  line-height: 1;
+  color: var(--color-accent);
+  margin-bottom: -0.3rem;
+}
+
+.avis-card-texte {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin: 0;
+  flex: 1;
+}
+
+.avis-card-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 0.5rem;
+}
+
+.avis-etoiles {
+  color: var(--color-accent);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+}
+
+.avis-nom {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* Section Découvrir Bruxelles */
+.section-bruxelles {
+  padding: 4rem 1.5rem;
+}
+
+.bruxelles-header {
+  margin-bottom: 2.5rem;
+}
+
+.bruxelles-header h2 em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.bruxelles-intro {
+  color: #666;
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0.8rem 0 0;
+  max-width: 780px;
+}
+
+.bruxelles-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.2rem;
+  margin-bottom: 4rem;
+}
+
+.bruxelles-card {
+  background-color: #fff;
+  border-radius: var(--radius-big);
+  border-left: 4px solid var(--color-accent);
+  box-shadow: var(--shadow);
+  padding: 1.4rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+  color: var(--color-text);
+}
+
+.bruxelles-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  color: var(--color-text);
+}
+
+.bruxelles-icon {
+  font-size: 1.8rem;
+  color: var(--color-accent);
+  margin-bottom: 0.2rem;
+}
+
+.bruxelles-card h3 {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.bruxelles-card p {
+  font-size: 0.88rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Sections détaillées */
+.bruxelles-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.bruxelles-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  scroll-margin-top: 90px;
+}
+
+.bruxelles-detail-img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  object-position: center;
+  border-radius: var(--radius-big);
+  flex-shrink: 0;
+}
+
+.bruxelles-detail-text h3 {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.bruxelles-detail-text p {
+  color: #555;
+  line-height: 1.8;
+  margin: 0 0 0.8rem;
+}
+
+.bruxelles-gastro-list {
+  padding-left: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  color: #555;
+  line-height: 1.7;
+}
+
+.bruxelles-gastro-list li strong {
+  color: var(--color-primary);
+  font-family: 'Poppins', sans-serif;
+}
+
+/* CTA final */
+.section-cta {
+  background-color: var(--color-primary);
+  text-align: center;
+  padding: 5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.section-cta h2 {
+  color: #fff;
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.section-cta h2 em {
+  color: var(--color-accent);
+  font-style: italic;
+}
+
+.section-cta p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1rem;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .hero-content h1 {
+    font-size: 4rem;
+  }
+
+  .reservation-bar-inner {
+    flex-direction: row;
+    align-items: flex-end;
+  }
+
+
+  .resa-field {
+    flex: 1;
+  }
+
+  .section-header {
+    flex-direction: row;
+    align-items: baseline;
+    justify-content: space-between;
+  }
+
+  .section-chambres,
+  .section-services {
+    padding: 4rem 6rem;
+  }
+
+  .chambres-grid {
+    flex-direction: row;
+  }
+
+  .chambre-card {
+    flex: 1;
+  }
+
+  .services-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 4rem;
+  }
+
+  .service-row:nth-child(odd):last-child {
+    grid-column: 1 / -1;
+  }
+
+  .section-avis-inner {
+    padding: 2rem 0 3rem 6rem;
+  }
+
+  .wave-avis svg {
+    height: 80px;
+  }
+
+  .avis-card {
+    width: 340px;
+  }
+
+  .section-bruxelles {
+    padding: 5rem 6rem;
+  }
+
+  .bruxelles-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .bruxelles-detail {
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .bruxelles-detail:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  .bruxelles-detail-img {
+    width: 45%;
+    height: 320px;
+    flex-shrink: 0;
+  }
+
+  .bruxelles-detail-text {
+    flex: 1;
+  }
+
+  .section-cta h2 {
+    font-size: 2.2rem;
+  }
+}

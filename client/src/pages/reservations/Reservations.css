@@ -1,0 +1,99 @@
+.resa-page {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2rem 1.5rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.resa-form-wrapper h2 {
+  margin-bottom: 1.5rem;
+}
+
+.resa-info {
+  background-color: #fff;
+  border-radius: var(--radius-big);
+  border: 2px solid var(--color-primary);
+  padding: 2rem;
+  color: var(--color-text);
+}
+
+.resa-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.resa-submit {
+  width: 100%;
+  padding: 0.8em;
+  font-size: 1rem;
+  border-radius: var(--radius-small);
+  margin-top: 0.5rem;
+}
+
+.resa-mention {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  color: #777;
+  margin: 0;
+}
+
+.resa-mention .material-symbols-outlined {
+  font-size: 1rem;
+  color: var(--color-accent);
+}
+
+.resa-info ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.resa-info li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.8rem;
+  color: var(--color-text);
+  line-height: 1.6;
+}
+
+.resa-info .material-symbols-outlined {
+  font-size: 1.3rem;
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+@media (min-width: 768px) {
+  .resa-page {
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 3rem 4rem;
+    gap: 4rem;
+  }
+
+  .resa-form-wrapper {
+    flex: 1;
+  }
+
+  .resa-row {
+    flex-direction: row;
+  }
+
+  .resa-row .resa-field {
+    flex: 1;
+  }
+
+  .resa-info {
+    width: 280px;
+    flex-shrink: 0;
+    align-self: center;
+  }
+}

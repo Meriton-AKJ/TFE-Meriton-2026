@@ -1,12 +1,11 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import './App.css'
-import Navbar from './components/Navbar'
-import Footer from './components/Footer'
-import Accueil from './pages/Accueil'
-import Chambres from './pages/Chambres'
-import ChambreDetail from './pages/ChambreDetail'
-import Reservations from './pages/Reservations'
-import Login from './pages/Login'
+import Navbar from './components/navbar/Navbar'
+import Footer from './components/footer/Footer'
+import Accueil from './pages/accueil/Accueil'
+import Chambres from './pages/chambres/Chambres'
+import ChambreDetail from './pages/chambreDetail/ChambreDetail'
+import Reservations from './pages/reservations/Reservations'
+import Login from './pages/login/Login'
 
 function App() {
   return (

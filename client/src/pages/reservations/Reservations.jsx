@@ -1,3 +1,5 @@
+import './Reservations.css'
+
 function Reservations() {
   return (
     <main>
@@ -48,11 +50,11 @@ function Reservations() {
               <label>Type de chambre</label>
               <select>
                 <option value="">-- Sélectionnez --</option>
-                <option value="confort">Chambre Confort — 89 € / nuit</option>
-                <option value="superieure">Chambre Supérieure — 149 € / nuit</option>
-                <option value="familiale">Chambre Familiale — 199 € / nuit</option>
-                <option value="suite-junior">Suite Junior — 249 € / nuit</option>
-                <option value="suite-meriton">Suite Meriton — 349 € / nuit</option>
+                <option value="1">Chambre Standard — 95 € / nuit</option>
+                <option value="2">Chambre Standard Familiale — 105 € / nuit</option>
+                <option value="3">Chambre Supérieure — 125 € / nuit</option>
+                <option value="4">Chambre Supérieure Familiale — 135 € / nuit</option>
+                <option value="5">Suite Meriton — 200 € / nuit</option>
               </select>
             </div>
 
