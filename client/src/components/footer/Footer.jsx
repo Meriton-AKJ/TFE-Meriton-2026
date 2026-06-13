@@ -17,6 +17,8 @@ function Footer() {
             <li><NavLink to="/">Accueil</NavLink></li>
             <li><NavLink to="/chambres">Chambres</NavLink></li>
             <li><NavLink to="/reservations">Réservations</NavLink></li>
+            <li><NavLink to="/apropos">À propos</NavLink></li>
+            <li><NavLink to="/contact">Contact</NavLink></li>
             <li><NavLink to="/login">Login</NavLink></li>
           </ul>
         </div>

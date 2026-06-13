@@ -1,0 +1,118 @@
+.catalogue-header--apropos {
+  background-image: url('/assets/images/header-apropos.webp');
+}
+
+/* Conteneur de texte centré partagé */
+.apropos-inner {
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+/* Notre histoire */
+.apropos-histoire {
+  background-color: #fff;
+  padding: 5rem 1.5rem;
+}
+
+.apropos-histoire h2 {
+  margin-bottom: 1.5rem;
+}
+
+.apropos-histoire h2 em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.apropos-histoire p {
+  color: #555;
+  line-height: 1.8;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+}
+
+/* Nos valeurs */
+.apropos-valeurs {
+  background-color: var(--color-bg);
+  padding: 5rem 1.5rem;
+}
+
+.apropos-valeurs h2 {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.apropos-valeurs h2 em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.valeurs-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.valeur-card {
+  background-color: #fff;
+  border-radius: var(--radius-big);
+  box-shadow: var(--shadow);
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.valeur-icon {
+  font-size: 2rem;
+  color: var(--color-accent);
+}
+
+.valeur-card h3 {
+  font-size: 1.05rem;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.valeur-card p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Notre équipe */
+.apropos-equipe {
+  background-color: var(--color-primary);
+  padding: 5rem 1.5rem;
+}
+
+.apropos-equipe h2 {
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+.apropos-equipe h2 em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.apropos-equipe p {
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.8;
+  margin: 0 0 1rem;
+  font-size: 1rem;
+}
+
+@media (min-width: 768px) {
+  .apropos-histoire,
+  .apropos-valeurs,
+  .apropos-equipe {
+    padding: 6rem 6rem;
+  }
+
+  .valeurs-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

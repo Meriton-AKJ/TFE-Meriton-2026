@@ -185,17 +185,91 @@ button {
 
 /* Hero de page (partagé Chambres, Réservations) */
 .catalogue-header {
-  min-height: 50vh;
+  position: relative;
+  overflow: hidden;
+  min-height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: var(--color-primary);
+  background-size: cover;
+  background-position: center;
   color: #fff;
   text-align: center;
   padding: 3rem 1.5rem;
 }
 
+.catalogue-header::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 44, 95, 0.55);
+}
+
+.catalogue-header h1,
+.catalogue-header p {
+  position: relative;
+}
+
 .catalogue-header h1 { color: #fff; font-size: 2.8rem; margin-bottom: 0.5rem; }
 .catalogue-header h1 em { color: var(--color-accent); font-style: italic; }
 .catalogue-header p { color: rgba(255, 255, 255, 0.75); margin: 0; font-size: 1.05rem; font-style: italic; }
+
+/* Services (partagé Accueil + Chambres) */
+.services-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.service-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid var(--color-contrast);
+}
+
+.service-row:first-child {
+  border-top: 1px solid var(--color-contrast);
+}
+
+.service-row-icon {
+  font-size: 1.5rem;
+  color: var(--color-accent);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.service-row-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.service-row-body strong {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  color: var(--color-primary);
+}
+
+.service-row-body span {
+  font-size: 0.88rem;
+  color: #666;
+  line-height: 1.5;
+}
+
+@media (min-width: 768px) {
+  .services-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 4rem;
+  }
+
+  .service-row:nth-child(odd):last-child {
+    grid-column: 1 / -1;
+  }
+}

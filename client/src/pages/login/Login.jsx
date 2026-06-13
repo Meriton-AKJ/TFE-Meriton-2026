@@ -17,23 +17,23 @@ function Login() {
             <div className="resa-row">
               <div className="resa-field">
                 <label>Prénom</label>
-                <input type="text" />
+                <input type="text" placeholder='Votre prénom'/>
               </div>
               <div className="resa-field">
                 <label>Nom</label>
-                <input type="text" />
+                <input type="text" placeholder='Votre nom'/>
               </div>
             </div>
           )}
 
           <div className="resa-field">
             <label>Email</label>
-            <input type="email" />
+            <input type="email" placeholder='votre@email.com' />
           </div>
 
           <div className="resa-field">
             <label>Mot de passe</label>
-            <input type="password" />
+            <input type="password" placeholder='*******' />
           </div>
 
           <button type="submit" className="btn-primary resa-submit">

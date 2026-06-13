@@ -1,12 +1,22 @@
 /* Hero */
 .hero {
   position: relative;
-  min-height: 80vh;
+  min-height: 90vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: var(--color-primary);
+  background-image: url('/assets/images/header-home.webp');
+  background-size: cover;
+  background-position: center;
   overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 44, 95, 0.6);
 }
 
 .hero-content {
@@ -186,50 +196,6 @@
   color: var(--color-accent);
 }
 
-.services-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.service-row {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.2rem;
-  padding: 1.1rem 0;
-  border-bottom: 1px solid var(--color-contrast);
-}
-
-.service-row:first-child {
-  border-top: 1px solid var(--color-contrast);
-}
-
-.service-row-icon {
-  font-size: 1.5rem;
-  color: var(--color-accent);
-  flex-shrink: 0;
-  margin-top: 0.1rem;
-}
-
-.service-row-body {
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.service-row-body strong {
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.95rem;
-  color: var(--color-primary);
-}
-
-.service-row-body span {
-  font-size: 0.88rem;
-  color: #666;
-  line-height: 1.5;
-}
 
 /* Section Avis */
 .section-avis {
@@ -241,6 +207,7 @@
   color: #fff;
   margin-bottom: 2rem;
   padding-right: 1.5rem;
+  text-align: center;
 }
 
 .section-avis h2 em {
@@ -430,33 +397,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-/* CTA final */
-.section-cta {
-  background-color: var(--color-primary);
-  text-align: center;
-  padding: 5rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1.2rem;
-}
-
-.section-cta h2 {
-  color: #fff;
-  font-size: 1.8rem;
-  margin: 0;
-}
-
-.section-cta h2 em {
-  color: var(--color-accent);
-  font-style: italic;
-}
-
-.section-cta p {
-  color: rgba(255, 255, 255, 0.75);
-  font-size: 1rem;
-  margin: 0;
-}
 
 @media (min-width: 768px) {
   .hero-content h1 {
@@ -492,17 +432,7 @@
     flex: 1;
   }
 
-  .services-list {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    column-gap: 4rem;
-  }
-
-  .service-row:nth-child(odd):last-child {
-    grid-column: 1 / -1;
-  }
-
-  .section-avis-inner {
+.section-avis-inner {
     padding: 2rem 0 3rem 6rem;
   }
 
@@ -542,7 +472,4 @@
     flex: 1;
   }
 
-  .section-cta h2 {
-    font-size: 2.2rem;
-  }
 }

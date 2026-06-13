@@ -1,9 +1,8 @@
 {
   "name": "tfe-meriton",
   "private": true,
-  "devDependencies": {
-    "@prisma/client": "^5.22.0",
-    "dotenv": "^17.4.2",
-    "prisma": "^5.22.0"
+  "scripts": {
+    "dev:client": "npm run dev --prefix client",
+    "dev:api": "npm run dev --prefix api"
   }
 }

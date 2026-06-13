@@ -1,10 +1,13 @@
+.catalogue-header--reservation {
+  background-image: url('/assets/images/header-reservation.webp');
+}
+
 .resa-page {
   display: flex;
   flex-direction: column;
   gap: 3rem;
-  padding: 2rem 1.5rem;
-  max-width: 1000px;
-  margin: 0 auto;
+  padding: 3rem 1.5rem;
+  min-height: 73vh;
 }
 
 .resa-form-wrapper h2 {
@@ -71,12 +74,124 @@
   margin-top: 0.1rem;
 }
 
+.resa-avantages {
+  background-color: var(--color-primary);
+  padding: 6rem 1.5rem;
+  text-align: center;
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.resa-avantages h2 {
+  color: #fff;
+  margin-bottom: 2rem;
+}
+
+.resa-avantages h2 em {
+  color: var(--color-accent);
+  font-style: italic;
+}
+
+.avantages-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.2rem;
+}
+
+.avantage-card {
+  background-color: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-big);
+  padding: 1.6rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  text-align: center;
+}
+
+.avantage-icon {
+  font-size: 2rem;
+  color: var(--color-accent);
+}
+
+.avantage-card h3 {
+  font-size: 0.95rem;
+  color: #fff;
+  margin: 0;
+}
+
+.avantage-card p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.resa-experiences {
+  padding: 6rem 1.5rem;
+  background-color: var(--color-bg);
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.resa-experiences h2 {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.resa-experiences h2 em {
+  font-style: italic;
+  color: var(--color-accent);
+}
+
+.experiences-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+.experience-card {
+  background-color: var(--color-bg);
+  border-radius: var(--radius-big);
+  border-top: 4px solid var(--color-accent);
+  box-shadow: var(--shadow);
+  padding: 2rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.experience-icon {
+  font-size: 2.2rem;
+  color: var(--color-accent);
+}
+
+.experience-card h3 {
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.experience-card p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.7;
+  margin: 0;
+}
+
 @media (min-width: 768px) {
   .resa-page {
     flex-direction: row;
     align-items: flex-start;
-    padding: 3rem 4rem;
+    padding: 3rem 6rem;
     gap: 4rem;
+    max-width: 1000px;
+    margin: 0 auto;
   }
 
   .resa-form-wrapper {
@@ -95,5 +210,21 @@
     width: 280px;
     flex-shrink: 0;
     align-self: center;
+  }
+
+  .resa-avantages {
+    padding: 6rem 8rem;
+  }
+
+  .avantages-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .resa-experiences {
+    padding: 6rem 8rem;
+  }
+
+  .experiences-grid {
+    grid-template-columns: repeat(3, 1fr);
   }
 }

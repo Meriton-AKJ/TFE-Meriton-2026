@@ -1,10 +1,17 @@
 import './Reservations.css'
 
+const avantages = [
+  { icon: 'verified',         titre: 'Meilleur prix garanti',    description: 'Réserver en direct vous assure le meilleur tarif disponible.' },
+  { icon: 'event_available',  titre: 'Annulation gratuite',      description: 'Annulation sans frais jusqu\'à 24h avant votre arrivée.' },
+  { icon: 'wifi',             titre: 'Wi-Fi inclus',             description: 'Connexion haut débit gratuite dans toutes les chambres.' },
+  { icon: 'schedule',         titre: 'Réception 24h/24',         description: 'Notre équipe est disponible à toute heure pour vous accueillir.' },
+]
+
 function Reservations() {
   return (
     <main>
 
-      <section className="catalogue-header">
+      <section className="catalogue-header catalogue-header--reservation">
         <h1>Faire une <em>réservation</em></h1>
         <p>Réservez votre séjour en quelques étapes simples.</p>
       </section>
@@ -49,7 +56,7 @@ function Reservations() {
             <div className="resa-field">
               <label>Type de chambre</label>
               <select>
-                <option value="">-- Sélectionnez --</option>
+                <option value="">Sélectionnez un type de chambre</option>
                 <option value="1">Chambre Standard — 95 € / nuit</option>
                 <option value="2">Chambre Standard Familiale — 105 € / nuit</option>
                 <option value="3">Chambre Supérieure — 125 € / nuit</option>
@@ -88,6 +95,40 @@ function Reservations() {
           </ul>
         </div>
 
+      </section>
+
+      <section className="resa-avantages">
+        <h2>Pourquoi réserver <em>en direct</em> ?</h2>
+        <div className="avantages-grid">
+          {avantages.map((a) => (
+            <div key={a.titre} className="avantage-card">
+              <span className="material-symbols-outlined avantage-icon">{a.icon}</span>
+              <h3>{a.titre}</h3>
+              <p>{a.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="resa-experiences">
+        <h2>Votre séjour, <em>votre façon</em></h2>
+        <div className="experiences-grid">
+          <div className="experience-card">
+            <span className="material-symbols-outlined experience-icon">luggage</span>
+            <h3>Voyager</h3>
+            <p>Idéalement situé au cœur de Bruxelles, le Meriton Hotel est votre point de départ parfait pour explorer la capitale européenne et ses environs.</p>
+          </div>
+          <div className="experience-card">
+            <span className="material-symbols-outlined experience-icon">explore</span>
+            <h3>Découvrir</h3>
+            <p>Grand-Place, Atomium, musées royaux… Notre équipe de conciergerie vous guide pour découvrir le meilleur de Bruxelles à votre rythme.</p>
+          </div>
+          <div className="experience-card">
+            <span className="material-symbols-outlined experience-icon">spa</span>
+            <h3>Se relaxer</h3>
+            <p>Spa, piscine intérieure et massages, laissez-vous aller à une détente absolue sans quitter l'hôtel.</p>
+          </div>
+        </div>
       </section>
 
     </main>

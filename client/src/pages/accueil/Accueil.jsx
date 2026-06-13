@@ -1,18 +1,16 @@
+import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import chambresData from '../../data/chambres'
+import { getRooms } from '../../services/rooms.service'
 import Wave from '../../components/styleSection/wave/Wave'
+import Cta from '../../components/cta/Cta'
 import './Accueil.css'
 
-const chambres = chambresData.filter((c) => c.featured)
-
 const services = [
-  { icon: 'restaurant',    titre: 'Restaurant',          description: 'Cuisine gastronomique belge revisitée, carte du marché et cave à vins d\'exception.' },
+  { icon: 'restaurant',    titre: 'Restaurant',           description: 'Cuisine gastronomique belge revisitée, carte du marché et cave à vins d\'exception.' },
   { icon: 'spa',           titre: 'Spa & Bien-être',      description: 'Massages, soins du visage, hammam, sauna et piscine intérieure chauffée.' },
   { icon: 'local_bar',     titre: 'Bar & Lounge',         description: 'Bar élégant ouvert jusqu\'à minuit, cocktails signature et large sélection de spiritueux.' },
-  { icon: 'meeting_room',  titre: 'Salles de réunion',    description: 'Deux espaces modulables, équipement audiovisuel complet et service traiteur sur mesure.' },
   { icon: 'fitness_center',titre: 'Fitness',              description: 'Salle de sport ouverte 24h/24, équipements Technogym et coachs disponibles sur demande.' },
   { icon: 'room_service',  titre: 'Room service',         description: 'Service en chambre disponible 24h/24 pour vos repas, petits-déjeuners et collations.' },
-  { icon: 'local_parking', titre: 'Parking sécurisé',     description: 'Parking privé couvert, directement accessible depuis l\'hôtel.' },
   { icon: 'support_agent', titre: 'Conciergerie',         description: 'Notre équipe organise vos visites, réservations de restaurants et transferts aéroport.' },
 ]
 
@@ -34,6 +32,12 @@ const avis = [
 ]
 
 function Accueil() {
+  const [featured, setFeatured] = useState([])
+
+  useEffect(() => {
+    getRooms().then((data) => setFeatured(data.filter((r) => r.featured)))
+  }, [])
+
   return (
     <main>
 
@@ -86,16 +90,16 @@ function Accueil() {
           <Link to="/chambres" className="voir-tout">Voir tout le catalogue </Link>
         </div>
         <div className="chambres-grid">
-          {chambres.map((c) => (
-            <div key={c.id} className="chambre-card">
+          {featured.map((r) => (
+            <div key={r.id} className="chambre-card">
               <div className="chambre-img-placeholder">
-                <img src={c.image} alt={c.nom} />
+                <img src={r.image} alt={r.name} />
               </div>
               <div className="chambre-info">
-                <h3>{c.nom}</h3>
-                <p>{c.description}</p>
+                <h3>{r.name}</h3>
+                <p>{r.description}</p>
                 <div className="chambre-footer">
-                  <span className="chambre-prix">à partir de <strong>{c.prix} €</strong> / nuit</span>
+                  <span className="chambre-prix">à partir de <strong>{r.price} €</strong> / nuit</span>
                   <Link to="/reservations" className="btn-primary">Réserver</Link>
                 </div>
               </div>
@@ -106,7 +110,10 @@ function Accueil() {
 
       {/* Services */}
       <section className="section-services">
-        <h2>Nos <em>services</em></h2>
+        <div className="section-header">
+          <h2>Nos <em>services</em></h2>
+          <Link to="/chambres#services" className="voir-tout">Voir tous nos services</Link>
+        </div>
         <ul className="services-list">
           {services.map((s) => (
             <li key={s.titre} className="service-row">
@@ -259,12 +266,7 @@ function Accueil() {
         </div>
       </section>
 
-      {/* CTA final */}
-      <section className="section-cta">
-        <h2>Prêt à vivre l'expérience <em>Meriton</em> ?</h2>
-        <p>Réservez dès maintenant et profitez d'un séjour d'exception au cœur de Bruxelles.</p>
-        <Link to="/reservations" className="btn-accent hero-btn">Réserver une chambre</Link>
-      </section>
+      <Cta />
 
     </main>
   )
