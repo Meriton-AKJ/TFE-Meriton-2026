@@ -49,7 +49,7 @@ function ChambreDetail() {
           <h3>Équipements</h3>
           <div className="catalogue-equipements">
             {room.amenities.map((eq) => (
-              <span key={eq} className="material-symbols-outlined equip-icon" title={eq}>{eq}</span>
+              <span key={eq.icon} className="material-symbols-outlined equip-icon" title={eq.label}>{eq.icon}</span>
             ))}
           </div>
         </div>

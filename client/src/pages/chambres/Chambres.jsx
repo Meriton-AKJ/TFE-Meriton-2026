@@ -125,7 +125,7 @@ function Chambres() {
                 <p>{r.description}</p>
                 <div className="catalogue-equipements">
                   {r.amenities.map((eq) => (
-                    <span key={eq} className="material-symbols-outlined equip-icon" title={eq}>{eq}</span>
+                    <span key={eq.icon} className="material-symbols-outlined equip-icon" title={eq.label}>{eq.icon}</span>
                   ))}
                 </div>
                 <div className="catalogue-card-footer">
