@@ -1,7 +1,9 @@
 import { NavLink } from 'react-router-dom'
+import { useAuth } from '../../context/useAuth'
 import './Footer.css'
 
 function Footer() {
+  const { isAuthenticated, logout } = useAuth()
   return (
     <footer>
       <div className="footer-main">
@@ -19,7 +21,10 @@ function Footer() {
             <li><NavLink to="/reservations">Réservations</NavLink></li>
             <li><NavLink to="/apropos">À propos</NavLink></li>
             <li><NavLink to="/contact">Contact</NavLink></li>
-            <li><NavLink to="/login">Login</NavLink></li>
+            {isAuthenticated
+              ? <li><span className="footer-logout" onClick={logout}>Déconnexion</span></li>
+              : <li><NavLink to="/login">Connexion</NavLink></li>
+            }
           </ul>
         </div>
 

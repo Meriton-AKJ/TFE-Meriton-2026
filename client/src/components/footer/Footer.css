@@ -49,12 +49,15 @@ footer {
   gap: 0.7rem;
 }
 
-.footer-nav a {
+.footer-nav a,
+.footer-logout {
   color: var(--color-text);
   transition: color 0.2s;
+  cursor: pointer;
 }
 
-.footer-nav a:hover {
+.footer-nav a:hover,
+.footer-logout:hover {
   color: var(--color-primary);
 }
 

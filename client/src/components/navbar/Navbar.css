@@ -46,6 +46,22 @@ nav ul a.active {
   padding-bottom: 2px;
 }
 
+.nav-logout {
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  background-color: var(--color-accent);
+  padding: 0.45em 1.2em;
+  border-radius: var(--radius-small);
+  transition: background-color 0.2s;
+}
+
+.nav-logout:hover {
+  background-color: var(--color-accent-hover);
+}
+
 @media (min-width: 768px) {
   nav {
     flex-direction: row;

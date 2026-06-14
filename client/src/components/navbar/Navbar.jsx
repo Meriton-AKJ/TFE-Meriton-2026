@@ -1,7 +1,10 @@
 import { NavLink } from 'react-router-dom'
+import { useAuth } from '../../context/useAuth'
 import './Navbar.css'
 
 function Navbar() {
+  const { isAuthenticated, logout } = useAuth()
+
   return (
     <nav>
       <NavLink to="/">
@@ -11,7 +14,11 @@ function Navbar() {
         <li><NavLink to="/">Accueil</NavLink></li>
         <li><NavLink to="/chambres">Chambres</NavLink></li>
         <li><NavLink to="/reservations">Réservations</NavLink></li>
-        <li><NavLink to="/login">Login</NavLink></li>
+        {isAuthenticated ? (
+          <li><span className="nav-logout" onClick={logout}>Déconnexion</span></li>
+        ) : (
+          <li><NavLink to="/login">Connexion</NavLink></li>
+        )}
       </ul>
     </nav>
   )

@@ -16,7 +16,7 @@ export const registerUser = async (req, res, next) => {
     data: { name, email, password: hashedPassword },
   });
 
-  const token = jwt.sign({ userId: user.id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '7d' });
+  const token = jwt.sign({ userId: user.id, name: user.name, email: user.email, role: user.role }, process.env.JWT_SECRET, { expiresIn: '7d' });
   res.status(201).json({ token }).end();
 };
 
@@ -34,6 +34,6 @@ export const loginUser = async (req, res, next) => {
     return res.status(401).json({ message: "Invalid credentials" }).end();
   }
 
-  const token = jwt.sign({ userId: user.id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '7d' });
+  const token = jwt.sign({ userId: user.id, name: user.name, email: user.email, role: user.role }, process.env.JWT_SECRET, { expiresIn: '7d' });
   res.status(200).json({ token }).end();
 };

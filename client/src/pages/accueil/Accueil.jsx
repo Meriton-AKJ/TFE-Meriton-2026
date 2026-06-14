@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { getRooms } from '../../services/rooms.service'
+import { useAuth } from '../../context/useAuth'
 import Wave from '../../components/styleSection/wave/Wave'
 import Cta from '../../components/cta/Cta'
 import './Accueil.css'
@@ -33,6 +34,7 @@ const avis = [
 
 function Accueil() {
   const [featured, setFeatured] = useState([])
+  const { user, isAuthenticated } = useAuth()
 
   useEffect(() => {
     getRooms().then((data) => setFeatured(data.filter((r) => r.featured)))
@@ -44,9 +46,17 @@ function Accueil() {
       {/* Hero */}
       <section className="hero">
         <div className="hero-content">
-          <p className="hero-label">Bienvenue au</p>
+          <p className="hero-label">
+            {isAuthenticated
+              ? <>Bonjour <span className="hero-username">{user?.name}</span>,</>
+              : 'Bienvenue au'}
+          </p>
           <h1>Meriton Hotel</h1>
-          <p className="hero-sub">L'art de vous accueillir, depuis 2026.</p>
+          <p className="hero-sub">
+            {isAuthenticated
+              ? 'Nous sommes ravis de bientôt vous accueillir.'
+              : "L'art de vous accueillir, depuis 2026."}
+          </p>
           <Link to="/reservations" className="btn-accent hero-btn">Réserver maintenant</Link>
         </div>
       </section>

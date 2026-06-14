@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { AuthProvider } from './context/AuthContext'
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
 import Accueil from './pages/accueil/Accueil'
@@ -11,6 +12,7 @@ import APropos from './pages/apropos/APropos'
 
 function App() {
   return (
+    <AuthProvider>
     <BrowserRouter>
       <Navbar />
       <Routes>
@@ -24,6 +26,7 @@ function App() {
       </Routes>
       <Footer />
     </BrowserRouter>
+    </AuthProvider>
   )
 }
 
