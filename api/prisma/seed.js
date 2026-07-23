@@ -20,6 +20,7 @@ const rooms = [
     capacity: 2,
     family: false,
     price: 120,
+    quantity: 5,
     featured: true,
     description: 'Une chambre confortable et élégante, idéale pour un séjour d\'affaires ou de loisirs au cœur de Bruxelles.',
     amenities: [
@@ -38,6 +39,7 @@ const rooms = [
     capacity: 2,
     family: false,
     price: 185,
+    quantity: 5,
     featured: true,
     description: 'Spacieuse et raffinée, la chambre supérieure offre une vue sur la ville et des prestations haut de gamme.',
     amenities: [
@@ -57,6 +59,7 @@ const rooms = [
     capacity: 2,
     family: false,
     price: 320,
+    quantity: 3,
     featured: true,
     description: 'Notre suite phare, un espace d\'exception avec salon séparé, baignoire balnéo et service de conciergerie dédié.',
     amenities: [
@@ -77,6 +80,7 @@ const rooms = [
     capacity: 4,
     family: true,
     price: 210,
+    quantity: 5,
     featured: false,
     description: 'Conçue pour les familles, cette chambre spacieuse accueille jusqu\'à 4 personnes avec tout le confort nécessaire.',
     amenities: [
@@ -95,6 +99,7 @@ const rooms = [
     capacity: 4,
     family: true,
     price: 420,
+    quantity: 3,
     featured: false,
     description: 'L\'alliance du luxe et de l\'espace familial : deux chambres communicantes, salon et salle de bains double.',
     amenities: [
@@ -114,6 +119,7 @@ const rooms = [
     capacity: 3,
     family: true,
     price: 260,
+    quantity: 5,
     featured: false,
     description: 'Idéale pour une famille de trois, cette chambre supérieure combine espace généreux et finitions soignées.',
     amenities: [
