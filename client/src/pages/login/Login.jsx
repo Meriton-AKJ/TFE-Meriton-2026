@@ -1,7 +1,5 @@
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../../context/useAuth'
-import { loginUser, registerUser } from '../../services/auth.service'
 import './Login.css'
 
 function Login() {
@@ -9,28 +7,15 @@ function Login() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [error, setError] = useState('')
 
-  const { login } = useAuth()
-  const navigate = useNavigate() // useNavigate est un hook, on l'appelle ici, pas dans le handler
+  const { login, register, error } = useAuth()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    setError('')
-
-    try {
-      let data
-
-      if (mode === 'login') {
-        data = await loginUser(email, password)
-      } else {
-        data = await registerUser(name, email, password)
-      }
-
-      login(data.token) // stocke le token dans le contexte + localStorage
-      navigate('/')     // redirige vers l'accueil
-    } catch (err) {
-      setError(err.message) // affiche le message d'erreur de l'API
+    if (mode === 'login') {
+      await login(email, password)
+    } else {
+      await register(name, email, password)
     }
   }
 

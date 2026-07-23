@@ -1,20 +1,20 @@
-import { Router } from "express";
-import { getBookings, getBookingById, createBooking, updateBooking, deleteBooking } from "../controllers/bookings.controller.js";
-import { validate } from "../middlewares/validate.middleware.js";
-import { authMiddleware, isAdmin } from "../middlewares/auth.middleware.js";
-import { idSchema, createBookingSchema, updateBookingSchema } from "../validations/booking.validations.js";
+import { Router } from 'express'
+import { getBookings, getBookingById, createBooking, updateBooking, deleteBooking } from '../controllers/bookings.controller.js'
+import { auth } from '../middlewares/auth.middleware.js'
+import { validate } from '../middlewares/validate.middleware.js'
+import { idSchema, createBookingSchema, updateBookingSchema } from '../validations/booking.validations.js'
 
-const router = Router();
-
-router
-    .route("/")
-    .get(authMiddleware, isAdmin, getBookings)
-    .post(authMiddleware, validate({ body: createBookingSchema }), createBooking);
+const router = Router()
 
 router
-    .route("/:id")
-    .get(authMiddleware, validate({ params: idSchema }), getBookingById)
-    .patch(authMiddleware, isAdmin, validate({ params: idSchema, body: updateBookingSchema }), updateBooking)
-    .delete(authMiddleware, isAdmin, validate({ params: idSchema }), deleteBooking);
+  .route('/')
+  .get(auth(['ADMIN']), getBookings)
+  .post(auth(), validate({ body: createBookingSchema }), createBooking)
 
-export { router as bookingsRouter };
+router
+  .route('/:id')
+  .get(auth(), validate({ params: idSchema }), getBookingById)
+  .patch(auth(['ADMIN']), validate({ params: idSchema, body: updateBookingSchema }), updateBooking)
+  .delete(auth(['ADMIN']), validate({ params: idSchema }), deleteBooking)
+
+export { router as bookingsRouter }
