@@ -57,11 +57,12 @@ function Reservations() {
               <label>Type de chambre</label>
               <select>
                 <option value="">Sélectionnez un type de chambre</option>
-                <option value="1">Chambre Standard — 95 € / nuit</option>
-                <option value="2">Chambre Standard Familiale — 105 € / nuit</option>
-                <option value="3">Chambre Supérieure — 125 € / nuit</option>
-                <option value="4">Chambre Supérieure Familiale — 135 € / nuit</option>
-                <option value="5">Suite Meriton — 200 € / nuit</option>
+                <option value="1">Chambre Standard : 120 € / nuit</option>
+                <option value="2">Chambre Standard Familiale : 210 € / nuit</option>
+                <option value="3">Chambre Supérieure : 185 € / nuit</option>
+                <option value="4">Chambre Supérieure Familiale : 260 € / nuit</option>
+                <option value="5">Suite Meriton : 320 € / nuit</option>
+                <option value="5">Suite Familiale : 420 € / nuit</option>
               </select>
             </div>
 
