@@ -31,33 +31,51 @@ function ChambreDetail() {
   return (
     <main className="detail-page">
 
-      <div className="detail-img-placeholder">
+      <div className="detail-img-wrapper">
         <img src={room.image} alt={room.name} />
       </div>
 
       <div className="detail-content">
-        <Link to="/chambres" className="detail-retour">← Retour au catalogue</Link>
 
         <div className="detail-header">
-          <h1>{room.name}</h1>
-          <span className="catalogue-badge">{room.capacity} pers.</span>
+          <div className="detail-header-left">
+            <h1>{room.name}</h1>
+            <div className="detail-meta">
+              <span className="detail-prix">
+                à partir de <strong>{room.price} €</strong> / nuit
+              </span>
+              <span className="catalogue-badge">
+                Jusqu'à {room.capacity} personnes
+              </span>
+            </div>
+          </div>
         </div>
 
         <p className="detail-description">{room.description}</p>
 
-        <div className="detail-equipements">
-          <h3>Équipements</h3>
-          <div className="catalogue-equipements">
-            {room.amenities.map((eq) => (
-              <span key={eq.icon} className="material-symbols-outlined equip-icon" title={eq.label}>{eq.icon}</span>
-            ))}
+        {room.amenities?.length > 0 && (
+          <div className="detail-equipements">
+            <h3>Équipements</h3>
+            <ul className="detail-equip-list">
+              {room.amenities.map((eq) => (
+                <li key={eq.icon}>
+                  <span className="material-symbols-outlined">{eq.icon}</span>
+                  {eq.label}
+                </li>
+              ))}
+            </ul>
           </div>
+        )}
+
+        <div className="detail-actions">
+          <Link to="/chambres" className="btn-outline detail-retour">
+            Retour au catalogue
+          </Link>
+          <Link to={`/reservations?roomId=${room.id}`} className="btn-primary">
+            Réserver cette chambre
+          </Link>
         </div>
 
-        <div className="detail-footer">
-          <span className="chambre-prix">à partir de <strong>{room.price} €</strong> / nuit</span>
-          <Link to="/reservations" className="btn-primary">Réserver cette chambre</Link>
-        </div>
       </div>
 
     </main>

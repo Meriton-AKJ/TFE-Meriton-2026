@@ -1,7 +1,7 @@
 import 'dotenv/config'
 import { PrismaClient } from '@prisma/client'
 import { PrismaMariaDb } from '@prisma/adapter-mariadb'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
 const dbUrl = new URL(process.env.DB_URL)
 const adapter = new PrismaMariaDb({
