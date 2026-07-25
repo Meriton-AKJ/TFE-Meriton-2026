@@ -15,7 +15,10 @@ function Navbar() {
         <li><NavLink to="/chambres">Chambres</NavLink></li>
         <li><NavLink to="/reservations">Réservations</NavLink></li>
         {isAuthenticated ? (
-          <li><span className="nav-logout" onClick={logout}>Déconnexion</span></li>
+          <>
+            <li><NavLink to="/mes-sejours">Mes séjours</NavLink></li>
+            <li><span className="nav-logout" onClick={logout}>Déconnexion</span></li>
+          </>
         ) : (
           <li><NavLink to="/login">Connexion</NavLink></li>
         )}

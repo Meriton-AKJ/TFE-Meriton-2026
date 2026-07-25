@@ -1,0 +1,137 @@
+.resa-list-page {
+  min-height: 60vh;
+}
+
+.catalogue-header--resa-list {
+  background-image: url('/assets/images/header-sejours.webp');
+}
+
+.resa-list-content {
+  padding: 3rem 1.5rem;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.resa-list-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.resa-list-empty .material-symbols-outlined {
+  font-size: 3.5rem;
+  color: var(--color-accent);
+}
+
+.resa-list-empty h2 {
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.resa-list-empty p {
+  color: #666;
+  margin: 0;
+}
+
+.resa-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.resa-card {
+  display: flex;
+  border-radius: var(--radius-big);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+  background: #fff;
+}
+
+.resa-card-img {
+  width: 120px;
+  flex-shrink: 0;
+  object-fit: cover;
+}
+
+.resa-card-body {
+  padding: 1.2rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.resa-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.resa-card-top h3 {
+  font-size: 1rem;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.resa-status {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25em 0.7em;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.status-pending   { background: #fff3cd; color: #856404; }
+.status-confirmed { background: #d1e7dd; color: #0a5c36; }
+.status-cancelled { background: #f8d7da; color: #842029; }
+
+.resa-card-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.4rem 1rem;
+}
+
+.resa-card-details li {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: #555;
+}
+
+.resa-card-details .material-symbols-outlined {
+  font-size: 1rem;
+  color: var(--color-accent);
+}
+
+.resa-card-price {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.resa-list-error {
+  color: #c0392b;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .resa-list-content {
+    padding: 3rem 2rem;
+  }
+
+  .resa-card-img {
+    width: 180px;
+  }
+}

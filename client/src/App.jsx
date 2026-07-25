@@ -6,6 +6,7 @@ import Chambres from './pages/chambres/Chambres'
 import ChambreDetail from './pages/chambreDetail/ChambreDetail'
 import Reservations from './pages/reservations/Reservations'
 import Login from './pages/login/Login'
+import MesSejours from './pages/mesSejours/MesSejours'
 import Contact from './pages/contact/Contact'
 import APropos from './pages/apropos/APropos'
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/chambres/:id" element={<ChambreDetail />} />
         <Route path="/reservations" element={<Reservations />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/mes-sejours" element={<MesSejours />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/apropos" element={<APropos />} />
       </Routes>
