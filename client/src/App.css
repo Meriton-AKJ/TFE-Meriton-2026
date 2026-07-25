@@ -67,6 +67,17 @@ button {
 }
 
 .btn-primary {
+  display: inline-block;
+  padding: 0.6em 1.4em;
+  border: none;
+  border-radius: var(--radius-small);
+  cursor: pointer;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-decoration: none;
+  box-shadow: var(--shadow);
+  transition: background-color 0.2s, box-shadow 0.2s;
   background-color: var(--color-primary);
   color: #fff;
 }

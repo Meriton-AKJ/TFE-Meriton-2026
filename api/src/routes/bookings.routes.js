@@ -1,10 +1,12 @@
 import { Router } from 'express'
-import { getBookings, getBookingById, createBooking, updateBooking, deleteBooking } from '../controllers/bookings.controller.js'
+import { getBookings, getMyBookings, getBookingById, createBooking, updateBooking, deleteBooking } from '../controllers/bookings.controller.js'
 import { auth } from '../middlewares/auth.middleware.js'
 import { validate } from '../middlewares/validate.middleware.js'
 import { idSchema, createBookingSchema, updateBookingSchema } from '../validations/booking.validations.js'
 
 const router = Router()
+
+router.get('/me', auth(), getMyBookings)
 
 router
   .route('/')

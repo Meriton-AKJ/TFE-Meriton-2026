@@ -184,6 +184,189 @@
   margin: 0;
 }
 
+.resa-row {
+  display: flex;
+  gap: 1rem;
+  flex-direction: column;
+}
+
+.resa-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.resa-field label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.resa-field input,
+.resa-field select {
+  padding: 0.6rem 0.8rem;
+  border: 1.5px solid #ddd;
+  border-radius: var(--radius-small);
+  font-size: 0.95rem;
+  background: #fff;
+  color: var(--color-text);
+}
+
+.resa-field input:focus,
+.resa-field select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+}
+
+.resa-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-bg);
+  border-left: 3px solid var(--color-accent);
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius-small);
+  font-size: 0.9rem;
+}
+
+.resa-summary strong {
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+.resa-error {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: #c0392b;
+  margin: 0;
+}
+
+.resa-error .material-symbols-outlined {
+  font-size: 1rem;
+}
+
+.resa-auth-notice {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fff8e1;
+  border: 1px solid #f0c040;
+  border-radius: var(--radius-small);
+  padding: 0.7rem 1rem;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.resa-auth-notice a {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.resa-auth-notice .material-symbols-outlined {
+  font-size: 1rem;
+  color: #f0a000;
+  flex-shrink: 0;
+}
+
+.resa-confirmed-wrapper {
+  justify-content: center;
+  align-items: flex-start;
+  padding: 4rem 1.5rem;
+}
+
+.resa-confirmed-card {
+  background: #fff;
+  border-radius: var(--radius-big);
+  box-shadow: var(--shadow);
+  border-top: 4px solid #27ae60;
+  max-width: 520px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.resa-confirmed-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background: #f0faf4;
+  padding: 1.4rem 1.6rem;
+  border-bottom: 1px solid #d4edda;
+}
+
+.resa-confirmed-header .material-symbols-outlined {
+  font-size: 2.2rem;
+  color: #27ae60;
+  flex-shrink: 0;
+}
+
+.resa-confirmed-header h2 {
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  margin: 0 0 0.2rem;
+}
+
+.resa-confirmed-header p {
+  font-size: 0.8rem;
+  color: #888;
+  margin: 0;
+}
+
+.resa-confirmed-details {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.resa-confirmed-details li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.9rem 1.6rem;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 0.9rem;
+}
+
+.resa-confirmed-details li .material-symbols-outlined {
+  font-size: 1.2rem;
+  color: var(--color-accent);
+  flex-shrink: 0;
+}
+
+.resa-confirmed-details li span:last-child {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.resa-confirmed-details li strong {
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #999;
+  font-weight: 600;
+}
+
+.resa-confirmed-total {
+  background: #fafafa;
+}
+
+.resa-confirmed-total span:last-child {
+  color: var(--color-primary);
+  font-size: 1.05rem !important;
+  font-weight: 700;
+}
+
+.resa-success-actions {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 1.4rem 1.6rem;
+}
+
 @media (min-width: 768px) {
   .resa-page {
     flex-direction: row;
