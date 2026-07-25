@@ -1,0 +1,171 @@
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.admin-sidebar {
+  width: 220px;
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 2rem 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.admin-sidebar h2 {
+  color: var(--color-accent);
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0 0 1.5rem;
+}
+
+.admin-sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: rgba(255,255,255,0.75);
+  font-size: 0.9rem;
+  padding: 0.6rem 0.8rem;
+  border-radius: var(--radius-small);
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.admin-sidebar a:hover,
+.admin-sidebar a.active {
+  background-color: rgba(255,255,255,0.1);
+  color: #fff;
+}
+
+.admin-sidebar a .material-symbols-outlined {
+  font-size: 1.2rem;
+}
+
+.admin-main {
+  flex: 1;
+  padding: 2rem;
+  background-color: #f5f5f5;
+  overflow-x: auto;
+}
+
+.admin-main h1 {
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  margin: 0 0 1.5rem;
+}
+
+/* Stats cards */
+.admin-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: #fff;
+  border-radius: var(--radius-big);
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: var(--shadow);
+}
+
+.stat-card .material-symbols-outlined {
+  font-size: 2rem;
+  color: var(--color-accent);
+}
+
+.stat-card-info span {
+  font-size: 0.78rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.stat-card-info strong {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+/* Table */
+.admin-table-wrapper {
+  background: #fff;
+  border-radius: var(--radius-big);
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.admin-table-wrapper h2 {
+  font-size: 1rem;
+  color: var(--color-primary);
+  padding: 1.2rem 1.5rem;
+  margin: 0;
+  border-bottom: 1px solid #eee;
+}
+
+.admin-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+}
+
+.admin-table th {
+  text-align: left;
+  padding: 0.8rem 1rem;
+  background: #fafafa;
+  color: #888;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid #eee;
+}
+
+.admin-table td {
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  color: var(--color-text);
+}
+
+.admin-table tr:last-child td {
+  border-bottom: none;
+}
+
+/* Status badge */
+.admin-status {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.25em 0.7em;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.status-pending   { background: #fff3cd; color: #856404; }
+.status-confirmed { background: #d1e7dd; color: #0a5c36; }
+.status-cancelled { background: #f8d7da; color: #842029; }
+
+/* Select status */
+.admin-select {
+  font-size: 0.82rem;
+  padding: 0.3em 0.6em;
+  border: 1px solid #ddd;
+  border-radius: var(--radius-small);
+  background: #fff;
+  cursor: pointer;
+}
+
+/* Role badge */
+.role-admin { color: var(--color-accent); font-weight: 700; }
+.role-user  { color: #888; }
+
+@media (min-width: 768px) {
+  .admin-stats {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

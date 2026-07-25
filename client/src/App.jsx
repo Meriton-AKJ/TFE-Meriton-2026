@@ -9,22 +9,30 @@ import Login from './pages/login/Login'
 import MesSejours from './pages/mesSejours/MesSejours'
 import Contact from './pages/contact/Contact'
 import APropos from './pages/apropos/APropos'
+import AdminLayout from './pages/admin/AdminLayout'
+import Dashboard from './pages/admin/Dashboard'
+import AdminBookings from './pages/admin/AdminBookings'
+import AdminUsers from './pages/admin/AdminUsers'
+import AdminRoute from './components/AdminRoute'
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
       <Routes>
-        <Route path="/" element={<Accueil />} />
-        <Route path="/chambres" element={<Chambres />} />
-        <Route path="/chambres/:id" element={<ChambreDetail />} />
-        <Route path="/reservations" element={<Reservations />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/mes-sejours" element={<MesSejours />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/apropos" element={<APropos />} />
+        <Route path="/" element={<><Navbar /><Accueil /><Footer /></>} />
+        <Route path="/chambres" element={<><Navbar /><Chambres /><Footer /></>} />
+        <Route path="/chambres/:id" element={<><Navbar /><ChambreDetail /><Footer /></>} />
+        <Route path="/reservations" element={<><Navbar /><Reservations /><Footer /></>} />
+        <Route path="/login" element={<><Navbar /><Login /><Footer /></>} />
+        <Route path="/mes-sejours" element={<><Navbar /><MesSejours /><Footer /></>} />
+        <Route path="/contact" element={<><Navbar /><Contact /><Footer /></>} />
+        <Route path="/apropos" element={<><Navbar /><APropos /><Footer /></>} />
+        <Route path="/admin" element={<AdminRoute><AdminLayout /></AdminRoute>}>
+          <Route index element={<Dashboard />} />
+          <Route path="bookings" element={<AdminBookings />} />
+          <Route path="users" element={<AdminUsers />} />
+        </Route>
       </Routes>
-      <Footer />
     </BrowserRouter>
   )
 }
