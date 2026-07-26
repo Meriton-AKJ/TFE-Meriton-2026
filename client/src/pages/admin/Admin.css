@@ -164,6 +164,14 @@
 .role-admin { color: var(--color-accent); font-weight: 700; }
 .role-user  { color: #888; }
 
+.admin-btn-delete {
+  font-size: 0.8rem;
+  padding: 0.3em 0.8em;
+  border-radius: var(--radius-small);
+  cursor: pointer;
+  border: none;
+}
+
 @media (min-width: 768px) {
   .admin-stats {
     grid-template-columns: repeat(4, 1fr);

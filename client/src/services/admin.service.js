@@ -33,3 +33,22 @@ export const updateBookingStatus = async (id, status) => {
   if (!res.ok) throw new Error(data.message)
   return data
 }
+
+export const updateUserRole = async (id, role) => {
+  const res = await fetch(`${API_URL}/users/${id}`, {
+    method: 'PATCH',
+    headers: getAuthHeaders(),
+    body: JSON.stringify({ role }),
+  })
+  const data = await res.json()
+  if (!res.ok) throw new Error(data.message)
+  return data
+}
+
+export const deleteUser = async (id) => {
+  const res = await fetch(`${API_URL}/users/${id}`, {
+    method: 'DELETE',
+    headers: getAuthHeaders(),
+  })
+  if (!res.ok) throw new Error('Erreur lors de la suppression')
+}

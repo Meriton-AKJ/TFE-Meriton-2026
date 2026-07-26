@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { getUsers } from '../../services/admin.service.js'
+import { getUsers, updateUserRole, deleteUser } from '../../services/admin.service.js'
 
 const formatDate = (d) =>
   new Date(d).toLocaleDateString('fr-BE', { day: 'numeric', month: 'short', year: 'numeric' })
@@ -13,6 +13,27 @@ function AdminUsers() {
       .then(setUsers)
       .finally(() => setLoading(false))
   }, [])
+
+  const handleRoleChange = async (id, role) => {
+    // On envoie le nouveau rôle à l'API
+    await updateUserRole(id, role)
+
+    // On met à jour la liste localement sans recharger la page
+    const usersModifies = users.map((user) => {
+      if (user.id === id) {
+        return { ...user, role: role } // on remplace le rôle de cet user
+      }
+      return user // les autres restent inchangés
+    })
+
+    setUsers(usersModifies)
+  }
+
+  const handleDelete = async (id) => {
+    if (!window.confirm('Supprimer cet utilisateur et toutes ses réservations ?')) return
+    await deleteUser(id)
+    setUsers((prev) => prev.filter((u) => u.id !== id))
+  }
 
   if (loading) return <p>Chargement...</p>
 
@@ -28,6 +49,7 @@ function AdminUsers() {
               <th>Email</th>
               <th>Rôle</th>
               <th>Inscrit le</th>
+              <th>Actions</th>
             </tr>
           </thead>
           <tbody>
@@ -37,11 +59,24 @@ function AdminUsers() {
                 <td>{u.name ?? '—'}</td>
                 <td>{u.email}</td>
                 <td>
-                  <span className={u.role === 'ADMIN' ? 'role-admin' : 'role-user'}>
-                    {u.role}
-                  </span>
+                  <select
+                    className="admin-select"
+                    value={u.role}
+                    onChange={(e) => handleRoleChange(u.id, e.target.value)}
+                  >
+                    <option value="USER">USER</option>
+                    <option value="ADMIN">ADMIN</option>
+                  </select>
                 </td>
                 <td>{formatDate(u.createdAt)}</td>
+                <td>
+                  <button
+                    className="btn-danger admin-btn-delete"
+                    onClick={() => handleDelete(u.id)}
+                  >
+                    Supprimer
+                  </button>
+                </td>
               </tr>
             ))}
           </tbody>
