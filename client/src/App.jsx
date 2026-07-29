@@ -1,4 +1,5 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import ScrollToTop from './components/ScrollToTop'
 import Navbar from './components/navbar/Navbar'
 import Footer from './components/footer/Footer'
 import Accueil from './pages/accueil/Accueil'
@@ -19,6 +20,7 @@ import AdminRoute from './components/AdminRoute'
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <Routes>
         <Route path="/" element={<><Navbar /><Accueil /><Footer /></>} />
         <Route path="/chambres" element={<><Navbar /><Chambres /><Footer /></>} />
