@@ -213,7 +213,7 @@ function Reservations() {
                 <option value="">Sélectionnez un type de chambre</option>
                 {rooms.map((r) => (
                   <option key={r.id} value={r.id}>
-                    {r.name} — {r.price} € / nuit
+                    {r.name} : {r.price} € / nuit
                   </option>
                 ))}
               </select>
