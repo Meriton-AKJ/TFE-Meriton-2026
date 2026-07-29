@@ -13,6 +13,7 @@ import AdminLayout from './pages/admin/AdminLayout'
 import Dashboard from './pages/admin/Dashboard'
 import AdminBookings from './pages/admin/AdminBookings'
 import AdminUsers from './pages/admin/AdminUsers'
+import AdminContacts from './pages/admin/AdminContacts'
 import AdminRoute from './components/AdminRoute'
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
           <Route index element={<Dashboard />} />
           <Route path="bookings" element={<AdminBookings />} />
           <Route path="users" element={<AdminUsers />} />
+          <Route path="contacts" element={<AdminContacts />} />
         </Route>
       </Routes>
     </BrowserRouter>

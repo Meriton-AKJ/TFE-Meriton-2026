@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import Cta from '../../components/cta/Cta'
+import { sendContact } from '../../services/contact.service.js'
 import './Contact.css'
 
 const engagements = [
@@ -15,8 +16,31 @@ const faqContact = [
   { question: 'Puis-je faire une demande pour un groupe ?', reponse: 'Oui, pour toute réservation de groupe (5 chambres ou plus), contactez-nous par email à contact@meritonhotel.be avec vos dates et besoins.' },
 ]
 
+const initialForm = { firstName: '', lastName: '', email: '', subject: '', message: '' }
+
 function Contact() {
   const [faqOuverte, setFaqOuverte] = useState(null)
+  const [form, setForm] = useState(initialForm)
+  const [status, setStatus] = useState(null)
+  const [loading, setLoading] = useState(false)
+
+  const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value })
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    setStatus(null)
+    try {
+      await sendContact(form)
+      setStatus('success')
+      setForm(initialForm)
+    } catch {
+      setStatus('error')
+    } finally {
+      setLoading(false)
+    }
+  }
+
   return (
     <main>
 
@@ -29,40 +53,50 @@ function Contact() {
 
         <div className="contact-form-wrapper">
           <h2>Envoyez-nous un message</h2>
-          <form className="contact-form">
+
+          {status === 'success' && (
+            <p className="contact-success">Votre message a bien été envoyé. Nous vous répondrons sous 24h.</p>
+          )}
+          {status === 'error' && (
+            <p className="contact-error">Une erreur est survenue. Veuillez réessayer.</p>
+          )}
+
+          <form className="contact-form" onSubmit={handleSubmit}>
             <div className="contact-row">
               <div className="contact-field">
                 <label>Prénom</label>
-                <input type="text" placeholder="Votre prénom" />
+                <input type="text" name="firstName" value={form.firstName} onChange={handleChange} placeholder="Votre prénom" required />
               </div>
               <div className="contact-field">
                 <label>Nom</label>
-                <input type="text" placeholder="Votre nom" />
+                <input type="text" name="lastName" value={form.lastName} onChange={handleChange} placeholder="Votre nom" required />
               </div>
             </div>
 
             <div className="contact-field">
               <label>Email</label>
-              <input type="email" placeholder="votre@email.com" />
+              <input type="email" name="email" value={form.email} onChange={handleChange} placeholder="votre@email.com" required />
             </div>
 
             <div className="contact-field">
               <label>Sujet</label>
-              <select>
+              <select name="subject" value={form.subject} onChange={handleChange} required>
                 <option value="">Quel est votre sujet ?</option>
-                <option value="reservation">Réservation</option>
-                <option value="information">Demande d'information</option>
-                <option value="reclamation">Réclamation</option>
-                <option value="autre">Autre</option>
+                <option value="Réservation">Réservation</option>
+                <option value="Demande d'information">Demande d'information</option>
+                <option value="Réclamation">Réclamation</option>
+                <option value="Autre">Autre</option>
               </select>
             </div>
 
             <div className="contact-field">
               <label>Message</label>
-              <textarea rows="5" placeholder="Votre message..."></textarea>
+              <textarea name="message" value={form.message} onChange={handleChange} rows="5" placeholder="Votre message..." required />
             </div>
 
-            <button type="submit" className="btn-primary contact-submit">Envoyer</button>
+            <button type="submit" className="btn-primary contact-submit" disabled={loading}>
+              {loading ? 'Envoi...' : 'Envoyer'}
+            </button>
           </form>
         </div>
 

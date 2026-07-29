@@ -10,6 +10,7 @@ function AdminLayout() {
           <NavLink to="/admin" end>Dashboard</NavLink>
           <NavLink to="/admin/bookings">Réservations</NavLink>
           <NavLink to="/admin/users">Utilisateurs</NavLink>
+          <NavLink to="/admin/contacts">Messages</NavLink>
           <NavLink to="/" className="admin-nav-back">Retour au site</NavLink>
         </div>
       </header>

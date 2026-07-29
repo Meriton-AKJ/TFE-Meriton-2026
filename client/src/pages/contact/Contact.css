@@ -1,3 +1,21 @@
+.contact-success {
+  background: #d1e7dd;
+  color: #0a5c36;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius-small);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
+.contact-error {
+  background: #f8d7da;
+  color: #842029;
+  padding: 0.8rem 1rem;
+  border-radius: var(--radius-small);
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+}
+
 .catalogue-header--contact {
   background-image: url('/assets/images/header-contact.webp');
 }

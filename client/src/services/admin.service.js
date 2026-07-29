@@ -45,6 +45,23 @@ export const updateUserRole = async (id, role) => {
   return data
 }
 
+export const getContacts = async () => {
+  const res = await fetch(`${API_URL}/contact`, { headers: getAuthHeaders() })
+  const data = await res.json()
+  if (!res.ok) throw new Error(data.message)
+  return data
+}
+
+export const markContactAsRead = async (id) => {
+  const res = await fetch(`${API_URL}/contact/${id}/read`, {
+    method: 'PATCH',
+    headers: getAuthHeaders(),
+  })
+  const data = await res.json()
+  if (!res.ok) throw new Error(data.message)
+  return data
+}
+
 export const deleteUser = async (id) => {
   const res = await fetch(`${API_URL}/users/${id}`, {
     method: 'DELETE',
