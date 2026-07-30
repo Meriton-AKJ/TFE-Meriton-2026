@@ -46,6 +46,12 @@
   margin: 0 0 1rem;
 }
 
+.hero-logo {
+  height: 140px;
+  width: auto;
+  filter: brightness(0) invert(1);
+}
+
 .hero-sub {
   font-style: italic;
   color: rgba(255, 255, 255, 0.75);
@@ -229,7 +235,6 @@
   gap: 1.2rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
-  scrollbar-width: none;
   padding-right: 4rem;
   padding-bottom: 0.5rem;
 }

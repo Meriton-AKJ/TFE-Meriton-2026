@@ -51,7 +51,7 @@ function Accueil() {
               ? <>Bonjour <span className="hero-username">{user?.name}</span>,</>
               : 'Bienvenue au'}
           </p>
-          <h1>Meriton Hotel</h1>
+          <img src="/assets/images/logo-meriton-hotel.svg" alt="Meriton Hotel" className="hero-logo" />
           <p className="hero-sub">
             {isAuthenticated
               ? 'Nous sommes ravis de bientôt vous accueillir.'
