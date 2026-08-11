@@ -6,6 +6,33 @@ function formatDate(d) {
   return new Date(d).toLocaleDateString('fr-BE', { day: 'numeric', month: 'short', year: 'numeric' })
 }
 
+function exportCSV(bookings) {
+  // On construit le texte du fichier CSV ligne par ligne
+  let contenu = '#;Client;Email;Chambre;Arrivée;Départ;Total;Statut\n'
+
+  for (const b of bookings) {
+    contenu += String(b.id).padStart(5, '0') + ';'
+    contenu += (b.user.name ?? '') + ';'
+    contenu += b.user.email + ';'
+    contenu += b.room.name + ';'
+    contenu += formatDate(b.checkIn) + ';'
+    contenu += formatDate(b.checkOut) + ';'
+    contenu += b.totalPrice + ' €' + ';'
+    contenu += b.status + '\n'
+  }
+
+  // On crée un fichier temporaire et on déclenche le téléchargement
+  const blob = new Blob([contenu], { type: 'text/csv;charset=utf-8;' })
+  const url = URL.createObjectURL(blob)
+
+  const lien = document.createElement('a')
+  lien.href = url
+  lien.download = 'reservations.csv'
+  lien.click()
+
+  URL.revokeObjectURL(url)
+}
+
 function AdminBookings() {
   const [bookings, setBookings] = useState([])
   const [loading, setLoading] = useState(true)
@@ -75,9 +102,12 @@ function AdminBookings() {
     <>
       <div className="admin-section-header">
         <h1>Réservations</h1>
-        <button className="btn-primary" onClick={() => setShowForm(!showForm)}>
-          {showForm ? 'Annuler' : '+ Nouvelle réservation'}
-        </button>
+        <div style={{ display: 'flex', gap: '0.8rem' }}>
+          <button className="btn-outline" onClick={() => exportCSV(bookings)}>Exporter CSV</button>
+          <button className="btn-primary" onClick={() => setShowForm(!showForm)}>
+            {showForm ? 'Annuler' : '+ Nouvelle réservation'}
+          </button>
+        </div>
       </div>
 
       {showForm && (
