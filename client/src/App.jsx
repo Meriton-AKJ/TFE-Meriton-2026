@@ -15,6 +15,7 @@ import Dashboard from './pages/admin/Dashboard'
 import AdminBookings from './pages/admin/AdminBookings'
 import AdminUsers from './pages/admin/AdminUsers'
 import AdminContacts from './pages/admin/AdminContacts'
+import AdminRooms from './pages/admin/AdminRooms'
 import AdminRoute from './components/AdminRoute'
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route path="bookings" element={<AdminBookings />} />
           <Route path="users" element={<AdminUsers />} />
           <Route path="contacts" element={<AdminContacts />} />
+          <Route path="rooms" element={<AdminRooms />} />
         </Route>
       </Routes>
     </BrowserRouter>

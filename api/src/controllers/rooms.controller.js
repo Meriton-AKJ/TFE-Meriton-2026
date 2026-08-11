@@ -1,4 +1,5 @@
-import { prisma } from '../db.js';
+import { prisma } from '../db.js'
+import { uploadToCloudinary } from '../middlewares/upload.middleware.js'
 
 // Get all rooms
 export const getRooms = async (req, res, next) => {
@@ -37,6 +38,27 @@ export const updateRoom = async (req, res, next) => {
   });
   res.status(200).json(room).end();
 };
+
+// Modifier le prix ou l'image d'une chambre (upload Cloudinary)
+export const updateRoomUpload = async (req, res, next) => {
+  try {
+    const id = parseInt(req.params.id)
+    const data = {}
+
+    if (req.file) {
+      data.image = await uploadToCloudinary(req.file.buffer)
+    }
+
+    if (req.body.price) {
+      data.price = parseFloat(req.body.price)
+    }
+
+    const room = await prisma.room.update({ where: { id }, data })
+    res.json(room)
+  } catch (error) {
+    next(error)
+  }
+}
 
 // Delete a room by ID
 export const deleteRoom = async (req, res, next) => {

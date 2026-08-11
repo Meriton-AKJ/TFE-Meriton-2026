@@ -228,6 +228,42 @@
   width: 100%;
 }
 
+.admin-room-preview {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.admin-room-img {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: var(--radius-small);
+  flex-shrink: 0;
+}
+
+.admin-room-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.admin-form-succes {
+  color: #0a5c36;
+  font-size: 0.88rem;
+  background-color: #d1e7dd;
+  border-radius: var(--radius-small);
+  padding: 0.6rem 1rem;
+}
+
+@media (min-width: 768px) {
+  .admin-room-form {
+    flex-direction: row;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+}
+
 @media (min-width: 768px) {
   .admin-header {
     flex-direction: row;

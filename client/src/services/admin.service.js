@@ -70,6 +70,17 @@ export const deleteUser = async (id) => {
   if (!res.ok) throw new Error('Erreur lors de la suppression')
 }
 
+export const updateRoomImage = async (id, formData) => {
+  const res = await fetch(`${API_URL}/rooms/${id}/upload`, {
+    method: 'PATCH',
+    headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
+    body: formData,
+  })
+  const json = await res.json()
+  if (!res.ok) throw new Error(json.message)
+  return json
+}
+
 export const createAdminBooking = async (data) => {
   const res = await fetch(`${API_URL}/bookings/admin`, {
     method: 'POST',
