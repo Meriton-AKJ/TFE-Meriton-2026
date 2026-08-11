@@ -10,6 +10,7 @@ const adapter = new PrismaMariaDb({
   password: dbUrl.password,
   database: dbUrl.pathname.slice(1),
   port:     parseInt(dbUrl.port) || 3306,
+  // ssl: true
 })
 
 export const prisma = new PrismaClient({ adapter })
