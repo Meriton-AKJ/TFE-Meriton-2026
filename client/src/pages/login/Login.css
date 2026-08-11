@@ -54,6 +54,18 @@
   color: var(--color-accent);
 }
 
+.login-error {
+  color: #9b2c2c;
+  font-size: 0.88rem;
+  text-align: center;
+  margin: 0;
+  width: 100%;
+  background-color: rgba(231, 76, 60, 0.1);
+  border: 1px solid rgba(231, 76, 60, 0.3);
+  border-radius: var(--radius-small);
+  padding: 0.6rem 1rem;
+}
+
 .login-form .resa-row {
   flex-direction: row;
 }
