@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { getRooms } from '../../services/rooms.service'
 import Cta from '../../components/cta/Cta'
@@ -67,11 +67,13 @@ function Chambres() {
     getRooms().then((data) => setRooms(data))
   }, [])
 
-  const roomsFiltrees = rooms.filter((r) => {
-    if (typeFiltre !== 'tous' && r.type !== typeFiltre) return false
-    if (familleFiltre && !r.family) return false
-    return true
-  })
+  const roomsFiltrees = useMemo(() => {
+    return rooms.filter((r) => {
+      if (typeFiltre !== 'tous' && r.type !== typeFiltre) return false
+      if (familleFiltre && !r.family) return false
+      return true
+    })
+  }, [rooms, typeFiltre, familleFiltre])
 
   return (
     <main>
