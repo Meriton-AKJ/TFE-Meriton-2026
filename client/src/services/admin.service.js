@@ -69,3 +69,14 @@ export const deleteUser = async (id) => {
   })
   if (!res.ok) throw new Error('Erreur lors de la suppression')
 }
+
+export const createAdminBooking = async (data) => {
+  const res = await fetch(`${API_URL}/bookings/admin`, {
+    method: 'POST',
+    headers: getAuthHeaders(),
+    body: JSON.stringify(data),
+  })
+  const json = await res.json()
+  if (!res.ok) throw new Error(json.message)
+  return json
+}

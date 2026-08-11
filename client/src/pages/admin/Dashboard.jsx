@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { getStats } from '../../services/admin.service.js'
 
-const formatDate = (d) =>
-  new Date(d).toLocaleDateString('fr-BE', { day: 'numeric', month: 'short', year: 'numeric' })
+function formatDate(d) {
+  return new Date(d).toLocaleDateString('fr-BE', { day: 'numeric', month: 'short', year: 'numeric' })
+}
 
 const statusLabel = {
   pending:   { label: 'En attente',  className: 'status-pending' },
@@ -57,33 +58,22 @@ function Dashboard() {
         </div>
       </div>
 
-      <div className="admin-table-wrapper">
-        <h2>Dernières réservations</h2>
-        <table className="admin-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Client</th>
-              <th>Chambre</th>
-              <th>Arrivée</th>
-              <th>Statut</th>
-            </tr>
-          </thead>
-          <tbody>
-            {stats.recentBookings.map((b) => {
-              const status = statusLabel[b.status] ?? statusLabel.pending
-              return (
-                <tr key={b.id}>
-                  <td>#{String(b.id).padStart(5, '0')}</td>
-                  <td>{b.user.name ?? b.user.email}</td>
-                  <td>{b.room.name}</td>
-                  <td>{formatDate(b.checkIn)}</td>
-                  <td><span className={`admin-status ${status.className}`}>{status.label}</span></td>
-                </tr>
-              )
-            })}
-          </tbody>
-        </table>
+      <h2>Dernières réservations</h2>
+      <div className="admin-card-list">
+        {stats.recentBookings.map((b) => {
+          const status = statusLabel[b.status] ?? statusLabel.pending
+          return (
+            <div key={b.id} className="admin-card">
+              <div className="admin-card-info">
+                <span className="admin-card-ref">#{String(b.id).padStart(5, '0')}</span>
+                <span><strong>Client :</strong> {b.user.name ?? b.user.email}</span>
+                <span><strong>Chambre :</strong> {b.room.name}</span>
+                <span><strong>Arrivée :</strong> {formatDate(b.checkIn)}</span>
+              </div>
+              <span className={`admin-status ${status.className}`}>{status.label}</span>
+            </div>
+          )
+        })}
       </div>
     </>
   )

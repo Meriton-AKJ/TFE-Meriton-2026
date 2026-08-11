@@ -37,43 +37,55 @@ export const getBookingById = async (req, res, next) => {
   }
 }
 
+async function processBooking(userId, roomId, checkIn, checkOut, guests) {
+  const checkInDate = new Date(checkIn)
+  const checkOutDate = new Date(checkOut)
+
+  const room = await prisma.room.findUnique({ where: { id: roomId } })
+  if (!room) return { error: 'Chambre introuvable', status: 404 }
+
+  const overlappingCount = await prisma.booking.count({
+    where: {
+      roomId,
+      status: { not: 'cancelled' },
+      AND: [
+        { checkIn: { lt: checkOutDate } },
+        { checkOut: { gt: checkInDate } },
+      ],
+    },
+  })
+
+  if (overlappingCount >= room.quantity) {
+    return { error: 'Plus de chambres disponibles pour ces dates', status: 409 }
+  }
+
+  const nights = Math.ceil((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24))
+  const totalPrice = room.price * nights
+
+  const booking = await prisma.booking.create({
+    data: { userId, roomId, checkIn: checkInDate, checkOut: checkOutDate, guests, totalPrice },
+  })
+
+  return { booking }
+}
+
 export const createBooking = async (req, res, next) => {
   try {
     const { roomId, checkIn, checkOut, guests } = req.body
-    const userId = req.user.id
+    const result = await processBooking(req.user.id, roomId, checkIn, checkOut, guests)
+    if (result.error) return res.status(result.status).json({ message: result.error })
+    res.status(201).json(result.booking)
+  } catch (error) {
+    next(error)
+  }
+}
 
-    const checkInDate = new Date(checkIn)
-    const checkOutDate = new Date(checkOut)
-
-    // Récupérer la chambre et sa quantity
-    const room = await prisma.room.findUnique({ where: { id: roomId } })
-    if (!room) return res.status(404).json({ message: 'Chambre introuvable' })
-
-    // Compter les réservations actives qui chevauchent ces dates
-    const overlappingCount = await prisma.booking.count({
-      where: {
-        roomId,
-        status: { not: 'cancelled' },
-        AND: [
-          { checkIn: { lt: checkOutDate } },
-          { checkOut: { gt: checkInDate } },
-        ],
-      },
-    })
-
-    if (overlappingCount >= room.quantity) {
-      return res.status(409).json({ message: 'Plus de chambres disponibles pour ces dates' })
-    }
-
-    // Calculer le prix total côté serveur
-    const nights = Math.ceil((checkOutDate - checkInDate) / (1000 * 60 * 60 * 24))
-    const totalPrice = room.price * nights
-
-    const booking = await prisma.booking.create({
-      data: { userId, roomId, checkIn: checkInDate, checkOut: checkOutDate, guests, totalPrice },
-    })
-
-    res.status(201).json(booking)
+export const createBookingAdmin = async (req, res, next) => {
+  try {
+    const { userId, roomId, checkIn, checkOut, guests } = req.body
+    const result = await processBooking(userId, roomId, checkIn, checkOut, guests)
+    if (result.error) return res.status(result.status).json({ message: result.error })
+    res.status(201).json(result.booking)
   } catch (error) {
     next(error)
   }

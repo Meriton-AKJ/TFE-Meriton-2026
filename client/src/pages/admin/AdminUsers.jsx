@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { getUsers, updateUserRole, deleteUser } from '../../services/admin.service.js'
 
-const formatDate = (d) =>
-  new Date(d).toLocaleDateString('fr-BE', { day: 'numeric', month: 'short', year: 'numeric' })
+function formatDate(d) {
+  return new Date(d).toLocaleDateString('fr-BE', { day: 'numeric', month: 'short', year: 'numeric' })
+}
 
 function AdminUsers() {
   const [users, setUsers] = useState([])
@@ -14,22 +15,12 @@ function AdminUsers() {
       .finally(() => setLoading(false))
   }, [])
 
-  const handleRoleChange = async (id, role) => {
-    // On envoie le nouveau rôle à l'API
+  async function handleRoleChange(id, role) {
     await updateUserRole(id, role)
-
-    // On met à jour la liste localement sans recharger la page
-    const usersModifies = users.map((user) => {
-      if (user.id === id) {
-        return { ...user, role: role } // on remplace le rôle de cet user
-      }
-      return user // les autres restent inchangés
-    })
-
-    setUsers(usersModifies)
+    setUsers((prev) => prev.map((u) => u.id === id ? { ...u, role } : u))
   }
 
-  const handleDelete = async (id) => {
+  async function handleDelete(id) {
     if (!window.confirm('Supprimer cet utilisateur et toutes ses réservations ?')) return
     await deleteUser(id)
     setUsers((prev) => prev.filter((u) => u.id !== id))
@@ -40,47 +31,30 @@ function AdminUsers() {
   return (
     <>
       <h1>Utilisateurs</h1>
-      <div className="admin-table-wrapper">
-        <table className="admin-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Nom</th>
-              <th>Email</th>
-              <th>Rôle</th>
-              <th>Inscrit le</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {users.map((u) => (
-              <tr key={u.id}>
-                <td>{u.id}</td>
-                <td>{u.name ?? '—'}</td>
-                <td>{u.email}</td>
-                <td>
-                  <select
-                    className="admin-select"
-                    value={u.role}
-                    onChange={(e) => handleRoleChange(u.id, e.target.value)}
-                  >
-                    <option value="USER">USER</option>
-                    <option value="ADMIN">ADMIN</option>
-                  </select>
-                </td>
-                <td>{formatDate(u.createdAt)}</td>
-                <td>
-                  <button
-                    className="btn-danger admin-btn-delete"
-                    onClick={() => handleDelete(u.id)}
-                  >
-                    Supprimer
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="admin-card-list">
+        {users.map((u) => (
+          <div key={u.id} className="admin-card">
+            <div className="admin-card-info">
+              <span className="admin-card-ref">#{u.id}</span>
+              <span><strong>Nom :</strong> {u.name ?? '—'}</span>
+              <span><strong>Email :</strong> {u.email}</span>
+              <span><strong>Inscrit le :</strong> {formatDate(u.createdAt)}</span>
+            </div>
+            <div className="admin-card-actions">
+              <select
+                className="admin-select"
+                value={u.role}
+                onChange={(e) => handleRoleChange(u.id, e.target.value)}
+              >
+                <option value="USER">USER</option>
+                <option value="ADMIN">ADMIN</option>
+              </select>
+              <button className="btn-danger admin-btn-delete" onClick={() => handleDelete(u.id)}>
+                Supprimer
+              </button>
+            </div>
+          </div>
+        ))}
       </div>
     </>
   )

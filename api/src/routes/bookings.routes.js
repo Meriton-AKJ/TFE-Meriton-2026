@@ -1,12 +1,13 @@
 import { Router } from 'express'
-import { getBookings, getMyBookings, getBookingById, createBooking, updateBooking, deleteBooking } from '../controllers/bookings.controller.js'
+import { getBookings, getMyBookings, getBookingById, createBooking, createBookingAdmin, updateBooking, deleteBooking } from '../controllers/bookings.controller.js'
 import { auth } from '../middlewares/auth.middleware.js'
 import { validate } from '../middlewares/validate.middleware.js'
-import { idSchema, createBookingSchema, updateBookingSchema } from '../validations/booking.validations.js'
+import { idSchema, createBookingSchema, updateBookingSchema, createAdminBookingSchema } from '../validations/booking.validations.js'
 
 const router = Router()
 
 router.get('/me', auth(), getMyBookings)
+router.post('/admin', auth(['ADMIN']), validate({ body: createAdminBookingSchema }), createBookingAdmin)
 
 router
   .route('/')
