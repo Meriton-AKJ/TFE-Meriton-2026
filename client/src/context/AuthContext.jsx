@@ -64,7 +64,7 @@ export const AuthProvider = ({ children }) => {
   // Vérifie si un token existe dans le localStorage (session précédente)
   useEffect(() => {
     try {
-      const storedToken = localStorage.getItem('auth_token')
+      const storedToken = localStorage.getItem('token')
 
       if (storedToken) {
         // Un JWT est composé de 3 parties séparées par des points : header.payload.signature
@@ -77,7 +77,7 @@ export const AuthProvider = ({ children }) => {
       }
     } catch {
       // Si le token est corrompu ou invalide, on le supprime
-      localStorage.removeItem('auth_token')
+      localStorage.removeItem('token')
     } finally {
       // Dans tous les cas (succès ou erreur), on arrête le loading
       setLoading(false)
@@ -97,7 +97,7 @@ export const AuthProvider = ({ children }) => {
     const payload = JSON.parse(atob(token.split('.')[1]))
     setUser(payload)
     setToken(token)
-    localStorage.setItem('auth_token', token) // persiste la session
+    localStorage.setItem('token', token) // persiste la session
   }, [])
 
   // ------------------------------------------------------------------
@@ -109,7 +109,7 @@ export const AuthProvider = ({ children }) => {
   const logout = useCallback(() => {
     setUser(null)
     setToken(null)
-    localStorage.removeItem('auth_token')
+    localStorage.removeItem('token')
   }, [])
 
   // ------------------------------------------------------------------

@@ -1,21 +1,18 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import {
-  loginUser as loginService,
-  registerUser as registerService,
-  logout as logoutService,
-  isAuthenticated,
-  getUser,
-} from '../services/auth.service'
+import { AuthContext } from './AuthContext'
+import { loginUser, registerUser } from '../services/auth.service'
 
 export const useAuth = () => {
+  const { user, isAuthenticated, loading, login: contextLogin, logout: contextLogout } = useContext(AuthContext)
   const [error, setError] = useState(null)
   const navigate = useNavigate()
 
   const login = async (email, password) => {
     try {
       setError(null)
-      await loginService(email, password)
+      const data = await loginUser(email, password)
+      contextLogin(data.token)
       navigate('/')
     } catch (err) {
       setError(err.message)
@@ -25,7 +22,8 @@ export const useAuth = () => {
   const register = async (name, email, password) => {
     try {
       setError(null)
-      await registerService(name, email, password)
+      const data = await registerUser(name, email, password)
+      contextLogin(data.token)
       navigate('/')
     } catch (err) {
       setError(err.message)
@@ -33,16 +31,9 @@ export const useAuth = () => {
   }
 
   const logout = () => {
-    logoutService()
+    contextLogout()
     navigate('/login')
   }
 
-  return {
-    isAuthenticated: isAuthenticated(),
-    user: getUser(),
-    error,
-    login,
-    register,
-    logout,
-  }
+  return { user, isAuthenticated, loading, error, login, register, logout }
 }
